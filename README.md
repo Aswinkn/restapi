@@ -72,7 +72,7 @@
 
 ---
 
-### 3. Get Specified Books
+### 3. Get Specified Book
 - **URL:** `/api/books/{id}`
 - **Method:** `GET`
 - **Description:** Retrieves details of a specified book.
@@ -91,7 +91,6 @@
                   "genre": "Fiction",
                   "description": "A classic novel."
               },
-              ...
           ]
       }
       ```
