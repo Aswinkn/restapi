@@ -187,27 +187,6 @@
 					"response": []
 				}
 			]
-		},
-		{
-			"name": "New Request",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "https://dkworld.leadmlm.in/api/order-history",
-					"protocol": "https",
-					"host": [
-						"dkworld",
-						"leadmlm",
-						"in"
-					],
-					"path": [
-						"api",
-						"order-history"
-					]
-				}
-			},
-			"response": []
 		}
 	]
 }
