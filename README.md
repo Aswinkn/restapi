@@ -74,7 +74,7 @@
 
 ### 3. Update a Book
 - **URL:** `/api/books/{id}`
-- **Method:** `POST`
+- **Method:** `PUT`
 - **Request Body:**
     ```json
     {
