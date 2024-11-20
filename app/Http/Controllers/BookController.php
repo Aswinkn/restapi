@@ -12,7 +12,13 @@ class BookController extends Controller
      */
     public function index()
     {
-        return response()->json(Book::all(), 200);
+        $books = Book::all();
+    
+        if ($books->isEmpty()) {
+            return response()->json(['success' => false,'message' => 'No books found.',], 404);
+        }
+    
+        return response()->json(['success' => true,'data' => $books,], 200);
     }
 
     /**
@@ -20,16 +26,21 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'title' => 'required|string|max:255',
             'author' => 'required|string|max:255',
             'published_year' => 'required|integer',
             'genre' => 'required|string|max:255',
             'description' => 'nullable|string',
         ]);
-
-        $book = Book::create($request->all());
-        return response()->json($book, 201);
+    
+        try {
+            $book = Book::create($validated);
+    
+            return response()->json(['success' => true,'message' => 'Book added successfully!','data' => $book,], 201);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false,'message' => 'Failed to add book.','error' => $e->getMessage(),], 500);
+        }
     }
 
     /**
@@ -39,11 +50,12 @@ class BookController extends Controller
     public function show($id)
     {
         $book = Book::find($id);
-        if ($book) {
-            return response()->json($book, 200);
-        } else {
-            return response()->json(['message' => 'Book not found'], 404);
+    
+        if (!$book) {
+            return response()->json(['success' => false,'message' => 'Book not found.',], 404);
         }
+    
+        return response()->json(['success' => true,'data' => $book,], 200);
     }
 
     /**
@@ -53,11 +65,25 @@ class BookController extends Controller
     public function update(Request $request, $id)
     {
         $book = Book::find($id);
-        if ($book) {
-            $book->update($request->all());
-            return response()->json($book, 200);
-        } else {
-            return response()->json(['message' => 'Book not found'], 404);
+    
+        if (!$book) {
+            return response()->json(['success' => false,'message' => 'Book not found.',], 404);
+        }
+    
+        $validated = $request->validate([
+            'title' => 'nullable|string|max:255',
+            'author' => 'nullable|string|max:255',
+            'published_year' => 'nullable|integer',
+            'genre' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+    
+        try {
+            $book->update($validated);
+    
+            return response()->json(['success' => true,'message' => 'Book updated successfully!','data' => $book,], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false,'message' => 'Failed to update book.','error' => $e->getMessage(),], 500);
         }
     }
 
@@ -68,11 +94,17 @@ class BookController extends Controller
     public function destroy($id)
     {
         $book = Book::find($id);
-        if ($book) {
+    
+        if (!$book) {
+            return response()->json(['success' => false,'message' => 'Book not found.',], 404);
+        }
+    
+        try {
             $book->delete();
-            return response()->json(['message' => 'Book deleted'], 200);
-        } else {
-            return response()->json(['message' => 'Book not found'], 404);
+    
+            return response()->json(['success' => true,'message' => 'Book deleted successfully!',], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false,'message' => 'Failed to delete book.','error' => $e->getMessage(),], 500);
         }
     }
 }
