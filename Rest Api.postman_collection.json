@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "37fd8281-5dad-42f7-871f-be55f011c8c5",
+		"name": "Rest Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36830216"
+	},
+	"item": [
+		{
+			"name": "restapi",
+			"item": [
+				{
+					"name": "add book",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Fings of Fire2",
+									"type": "text"
+								},
+								{
+									"key": "author",
+									"value": "APJ Abdul Kalam",
+									"type": "text"
+								},
+								{
+									"key": "published_year",
+									"value": "2008",
+									"type": "text"
+								},
+								{
+									"key": "genre",
+									"value": "Biography",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "It is a biography of APJ Abdul Kalam",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/books",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all book",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/books",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get specified book",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/books/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"books",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update book",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/books/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"books",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete book",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/books/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"books",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://dkworld.leadmlm.in/api/order-history",
+					"protocol": "https",
+					"host": [
+						"dkworld",
+						"leadmlm",
+						"in"
+					],
+					"path": [
+						"api",
+						"order-history"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
