@@ -72,7 +72,39 @@
 
 ---
 
-### 3. Update a Book
+### 3. Get Specified Books
+- **URL:** `/api/books/{id}`
+- **Method:** `GET`
+- **Description:** Retrieves details of a specified book.
+- **Request Body:** None
+- **Response:**
+    - **Success:**
+      ```json
+      {
+          "success": true,
+          "data": [
+              {
+                  "id": 1,
+                  "title": "The Great Gatsby",
+                  "author": "F. Scott Fitzgerald",
+                  "published_year": 1925,
+                  "genre": "Fiction",
+                  "description": "A classic novel."
+              },
+              ...
+          ]
+      }
+      ```
+    - **Error (No Book Found):**
+      ```json
+      {
+          "success": false,
+          "message": "No book found."
+      }
+      ```
+
+---
+### 4. Update a Book
 - **URL:** `/api/books/{id}`
 - **Method:** `PUT`
 - **Request Body:**
@@ -104,7 +136,7 @@
 
 ---
 
-### 4. Delete a Book
+### 5. Delete a Book
 - **URL:** `/api/books/{id}`
 - **Method:** `DELETE`
 - **Response:**
