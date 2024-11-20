@@ -153,3 +153,7 @@
           "message": "Book not found."
       }
       ```
+
+
+
+The API collection is included in this folder as "Rest Api.postman_collection.json"
